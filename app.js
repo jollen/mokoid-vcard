@@ -23,11 +23,13 @@ db.once('open', function callback () {
   console.log('MongoDB: connected.');	
 });
 
-var vcardSchema = mongoose.Schema({
-    name: String,
-    nickname: String,
-    tel: String
-})
+var userSchema = new mongoose.Schema({
+    name: { type: String, default: ''},
+    phone: String,
+    email: String,
+    address: String,
+    age: { type: Number, default: 0 }
+});
 
 app.db = {
 	model: mongoose.model('Vcard', vcardSchema)
