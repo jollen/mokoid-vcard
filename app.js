@@ -32,7 +32,7 @@ var userSchema = new mongoose.Schema({
 });
 
 app.db = {
-	model: mongoose.model('Vcard', vcardSchema)
+	model: mongoose.model('user', userSchema)
 };
 
 // all environments
