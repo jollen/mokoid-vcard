@@ -72,3 +72,22 @@ exports.upload = function(req, res) {
         res.end();
     });
 };
+
+
+/*** MongoDB ***/
+
+exports.readNames = function(req, res) {
+	var model = req.app.db.model;
+
+	model.aggregate([
+        {
+           $project: { _id: 1,  name: 1 }
+        }])
+	.exec(function(err, users) {
+		res.send(users);
+		res.end();
+	});
+}
+
+
+
