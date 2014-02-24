@@ -76,6 +76,18 @@ exports.upload = function(req, res) {
 
 /*** MongoDB ***/
 
+exports.readMessages = function(req, res) {
+	var model = req.app.db.models.Message;
+
+	model
+		.find()
+		.populate('uid')
+		.exec(function(err, messages) {
+			res.send(messages);
+			res.end();
+		});
+}
+
 exports.readNames = function(req, res) {
 	var model = req.app.db.model;
 

@@ -65,6 +65,7 @@ if ('development' == app.get('env')) {
 app.post('/1/user', api.create);
 app.get('/1/user', api.read);
 app.get('/1/user/names', api.readNames);
+app.get('/1/user/messages', api.readMessages);
 app.put('/1/user/:nickname', api.update);
 app.delete('/1/user/:nickname', api.delete);
 
