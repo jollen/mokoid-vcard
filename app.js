@@ -31,8 +31,16 @@ var userSchema = new mongoose.Schema({
     age: { type: Number, default: 0 }
 });
 
+var messageSchema = new mongoose.Schema({
+    uid: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+    message: String,
+});
+
 app.db = {
-	model: mongoose.model('user', userSchema)
+	models: {
+		User: mongoose.model('user', userSchema),
+		Message: mongoose.model('message', messageSchema)
+	}
 };
 
 // all environments

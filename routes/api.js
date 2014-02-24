@@ -79,9 +79,16 @@ exports.upload = function(req, res) {
 exports.readNames = function(req, res) {
 	var model = req.app.db.model;
 
-	model.aggregate([
+	model
+	.aggregate([
         {
-           $project: { _id: 1,  name: 1 }
+           $project: { _id: 1,  name: 1, age: 1 }
+        },
+        {
+        	$match: {age: {$gt: 45} }
+        },
+        {
+        	$match: {age: {$lt: 60} }
         }])
 	.exec(function(err, users) {
 		res.send(users);
